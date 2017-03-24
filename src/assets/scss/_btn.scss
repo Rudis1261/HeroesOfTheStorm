@@ -1,0 +1,26 @@
+.btn {
+  color: #333;
+  display: inline-block;
+  text-align: center;
+  padding: 0 15px;
+  min-width: 40px;
+  line-height: 40px;
+  min-height: 40px;
+  background: #efefef;
+  border: 1px solid #ccc;
+  @include border-radius(3px);
+
+  &:hover,
+  &:active {
+    background: darken(#efefef, 5%);
+    border-color: darken(#ccc, 5%);
+    color: darken(#333, 5%);
+    cursor: pointer;
+    box-shadow: 0 2px 20px -11px $footerBoxShadow, 0px 10px 40px -10px #0072bd;
+  }
+
+  i {
+    line-height: 40px;
+    font-size: 18px;
+  }
+}

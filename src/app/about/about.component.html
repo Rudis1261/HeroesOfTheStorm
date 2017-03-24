@@ -1,0 +1,29 @@
+<div class="container" *ngIf="!loaded">
+  <loading></loading>
+</div>
+
+<div class="about-page" id="top" *ngIf="loaded">
+  <div class="container">
+    <div class="page-header-logo">
+      <img src="assets/img/logo.png" />
+    </div>
+    <div>
+      <h1 class="page-header">
+        {{title}}
+        <small>{{subTitle}}</small>
+      </h1>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="table-of-contents">
+      <li *ngFor="let toc of content | keys">
+        <a (click)="goTo(toc.value.anchor)">{{toc.key}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="container" [id]='section.value.anchor' *ngFor="let section of content | keys">
+    <h2 class="section-header">{{section.key}}</h2>
+    <p class="section-content" [innerHtml]="section.value.content | sanitizeHtml"></p>
+    <a class="to-top external text-center" (click)="goTo('top')">To Top</a>
+  </div>
+</div>

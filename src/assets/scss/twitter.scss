@@ -1,0 +1,84 @@
+.twitter-timeline {
+  > ul > li {
+    margin-bottom: 15px;
+    padding: 10px 10px 15px;
+    color: #fff;
+
+    & +.load-more {
+      padding-top: 15px;
+    }
+
+    &:nth-of-type(even) {
+      border-top: 1px solid darken(#292F33, 10%);
+      border-bottom: 1px solid darken(#292F33, 10%);
+      background: darken(#292F33, 2%);
+
+      & +.load-more {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .load-more {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 17px;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+      color: $primary;
+    }
+  }
+
+  &-img {
+    margin: 15px 0 0 50px;
+    overflow: hidden;
+    max-width: 100%;
+    @include border-radius(8px);
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-user {
+    a {
+      color: $primary;
+      &:hover {
+        color: darken($primary, 10%);
+        text-decoration: underline;
+      }
+      margin-bottom: 15px;
+      @include flex-display();
+      @include align-items(flex-end);
+    }
+
+    .logo {
+      margin-right: 10px;
+      width: 35px;
+      height: 35px;
+      overflow: hidden;
+
+      @include border-radius(4px);
+      @include flex(0 0 35px);
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .name {
+      margin-bottom: 5px;
+      @include flex(1 1);
+    }
+  }
+
+  &-body {
+    margin-left: 50px;
+    max-width: 400px;
+    white-space: pre-line;
+    line-height: 20px;
+  }
+}

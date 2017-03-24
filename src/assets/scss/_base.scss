@@ -1,0 +1,150 @@
+* {
+  @include borderBox;
+  font-family: $fontPrimary;
+}
+
+html,
+body,
+div {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: rgb(3, 23, 37);
+  padding: $headerHeight 0 0;
+}
+
+.container {
+  padding: 10px;
+  margin: 0 auto;
+  max-width: $screenFullPage;
+  .container {
+    padding: 0;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.flex {
+  @include flex-display();
+}
+
+a {
+  text-decoration: none;
+  color: $greyDarkest;
+  &:hover {
+    color: darken($greyDarkest, 19%);
+  }
+}
+
+a.external {
+  position: relative;
+  @include transition(all 500ms);
+
+  &:after {
+    content: " ";
+    position: absolute;
+    display: block;
+    background: lighten($blue, 22%);
+    height: 1px;
+    left: 5px;
+    right: 5px;
+    @include transition(all 500ms);
+  }
+  &:hover {
+    cursor: pointer;
+    color: darken($blue, 20%);
+
+    &:after {
+      left: 0;
+      right: 0;
+      background: darken($blue, 10%);
+    }
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="phone"] {
+  font-size: 16px;
+}
+@include respond-from($screenTablet) {
+  input[type="text"],
+  input[type="email"],
+  input[type="phone"] {
+    font-size: 18px;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+.row,
+.container {
+  @include clearfix();
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9 {
+  width: 100%;
+  margin: 0 auto 10px;
+}
+
+@include respond-from($screenTablet) {
+  .row {
+    @include flex-display();
+  }
+
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9 {
+    margin: 0 10px 20px;
+  }
+
+  .col-1 { @include flex(0 0 10%); }
+  .col-2 { @include flex(0 0 20%); }
+  .col-3 { @include flex(0 0 30%); }
+  .col-4 { @include flex(0 0 40%); }
+  .col-5 { @include flex(0 0 50%); }
+  .col-6 { @include flex(0 0 60%); }
+  .col-7 { @include flex(0 0 70%); }
+  .col-8 { @include flex(0 0 80%); }
+  .col-9 { @include flex(0 0 90%); }
+}

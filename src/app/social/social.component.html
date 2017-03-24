@@ -1,0 +1,62 @@
+<div class="container" *ngIf="(!streamers || streamers.length==0) && (!tweets || tweets.length==0)">
+  <loading></loading>
+</div>
+
+<div class="row" *ngIf="streamers.length > 0 && tweets.length > 0">
+  <div class="col-4 twitch">
+    <h3>Twitch Streamers</h3>
+    <div class="inner">
+      <ul>
+        <li *ngFor="let streamer of streamers | orderBy:'viewers'">
+          <a target="_blank" href="{{streamer.url}}">
+            <div class="twitch-streamer" *ngIf='streamer.online'>
+              <div class="twitch-streamer-image">
+                <img [src]="streamer.logo" [alt]="streamer.name" />
+              </div>
+              <div class="twitch-streamer-detail">
+                <div class="twitch-streamer-views"><i class="icon-eye" title="Viewers"></i> {{streamer.viewers}}</div>
+                <div class="twitch-streamer-name">{{streamer.name}}</div>
+                <div class="twitch-streamer-game"><b>LIVE</b> <span class="twitch-streamer-online"></span> playing {{streamer.game}}</div>
+              </div>
+            </div>
+            <div class="twitch-streamer" *ngIf='!streamer.online'>
+              <div class="twitch-streamer-image">
+                <img src="assets/img/twitch-offline.png" alt="offline" />
+              </div>
+              <div class="twitch-streamer-detail">
+                <div class="twitch-streamer-name">{{streamer.name}}</div>
+                <div class="twitch-streamer-game">Offline</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <a *ngIf="streamers.length > 0" class="external" target="_blank" href="mailto:iam@thatguy.co.za?subject=Heroes of the storm streamers&body=Hey There, I would like to be added please">I am not on there</a>
+    </div>
+  </div>
+
+  <div class="col-6 twitter">
+    <h3>Twitter 411</h3>
+    <div class="inner twitter-timeline">
+      <ul>
+        <li *ngFor='let tweet of tweets'>
+          <div class="twitter-timeline-item">
+            <div class="twitter-timeline-user">
+              <a target="_blank" [href]="tweet.user.url">
+                <div class="logo">
+                  <img [src]="tweet.user.profile_image_url_https" [alt]="tweet.user.screen_name" />
+                </div>
+                <div class="name">@{{tweet.user.screen_name}}</div>
+              </a>
+            </div>
+            <div class="twitter-timeline-body" [innerHtml]="tweet.text | linkify"></div>
+            <div class="twitter-timeline-img" *ngIf="tweet.entities.media && tweet.entities.media.length > 0">
+              <img [src]="tweet.entities.media[0].media_url_https" alt="image" />
+            </div>
+          </div>
+        </li>
+        <li *ngIf="tweets.length > 0" (click)='loadMore()' class="load-more">Load More</li>
+      </ul>
+    </div>
+  </div>
+</div>

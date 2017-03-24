@@ -1,0 +1,20 @@
+.page-title {
+	text-align: center;
+	margin-top: 10px;
+}
+
+h1.page-title:after {
+	display: block;
+	margin: 6px auto 0;
+	height: 1px;
+	background: #dadada;
+	content: " ";
+
+	@include respond-to($screenTablet) {
+		max-width: 200px;
+	}
+	@include respond-from($screenTablet) {
+		max-width: 400px;
+	
+	}
+}

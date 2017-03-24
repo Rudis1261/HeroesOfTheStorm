@@ -1,0 +1,63 @@
+.twitch-streamer {
+  min-height: 55px;
+  content: "";
+  padding: 8px;
+  background: #ddd;
+  border: 1px solid darken(#ddd, 2%);
+  @include flex-display();
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &-image {
+    max-width: 50px;
+    margin-right: 10px;
+    @include align-items(center);
+    @include flex(0 0 60px);
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-detail {
+    @include flex(1 1);
+  }
+
+  &-name,
+  &-game {
+    width: 100%;
+    display: block;
+    font-weight: bold;
+  }
+
+  &-name {
+    line-height: 26px;
+    font-size: 16px;
+    color: #6441a5;
+  }
+
+  &-game {
+    font-size: 14px;
+    color: #555;
+  }
+
+  &-views {
+    float: right;
+    font-size: 11px;
+    color: #000;
+  }
+
+  &-online {
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    background: #de1515;
+    box-shadow: 0 0 1px #fff,1px 1px 5px rgba(maroon, 0.5);
+    border: 1px solid maroon;
+    @include border-radius(50%);
+  }
+}
