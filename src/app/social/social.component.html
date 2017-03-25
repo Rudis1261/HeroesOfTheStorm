@@ -35,13 +35,14 @@
     </div>
   </div>
 
-  <div class="col-6 twitter">
+  <div class="col-6 tw">
     <h3>Twitter 411</h3>
-    <div class="inner twitter-timeline">
+    <div class="inner tw-timeline">
       <ul>
-        <li *ngFor='let tweet of tweets'>
-          <div class="twitter-timeline-item">
-            <div class="twitter-timeline-user">
+        <li *ngFor="let tweet of tweets | orderBy:'id':true">
+          <div class="tw-timeline-item">
+            <div class="tw-timeline-user">  
+              <div class="date pull-right">{{tweet.created_at | date}}</div>
               <a target="_blank" [href]="tweet.user.url">
                 <div class="logo">
                   <img [src]="tweet.user.profile_image_url_https" [alt]="tweet.user.screen_name" />
@@ -49,13 +50,12 @@
                 <div class="name">@{{tweet.user.screen_name}}</div>
               </a>
             </div>
-            <div class="twitter-timeline-body" [innerHtml]="tweet.text | linkify"></div>
-            <div class="twitter-timeline-img" *ngIf="tweet.entities.media && tweet.entities.media.length > 0">
+            <div class="tw-timeline-body" [innerHtml]="tweet.text | linkify"></div>
+            <div class="tw-timeline-img" *ngIf="tweet.entities.media && tweet.entities.media.length > 0">
               <img [src]="tweet.entities.media[0].media_url_https" alt="image" />
             </div>
           </div>
         </li>
-        <li *ngIf="tweets.length > 0" (click)='loadMore()' class="load-more">Load More</li>
       </ul>
     </div>
   </div>
