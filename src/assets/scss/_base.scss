@@ -12,6 +12,9 @@ div {
 
 body {
   background: rgb(3, 23, 37);
+  background: url('assets/img/space_background_496dfbfc7564.jpg');
+  background-size: cover;
+  background-attachment: fixed;
   padding: $headerHeight 0 0;
 }
 
@@ -19,8 +22,18 @@ body {
   padding: 10px;
   margin: 0 auto;
   max-width: $screenFullPage;
+
   .container {
     padding: 0;
+  }
+
+  &.main-container {
+    min-height: 500px;
+    //background: rgba(3, 23, 37, 0.7);
+    background: rgba(5, 18, 27, 0.74);
+    margin: 20px auto;
+    padding-bottom: 100px;
+    @include border-radius(10px);
   }
 }
 
