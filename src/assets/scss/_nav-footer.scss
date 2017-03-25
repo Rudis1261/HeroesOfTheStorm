@@ -40,6 +40,7 @@ footer {
         float: right;
     	backface-visibility: hidden;
     	display: inline-block;
+        width: 150px;
     	@include transform(scale(0.9));
 
     	&:hover {
@@ -70,6 +71,7 @@ footer {
 
     @include respond-to($screenTablet) {
         img {
+            width: 120px;
             @include transform(scale(0.7));
             &:hover {
                 @include transform(scale(0.9));

@@ -17,13 +17,10 @@ declare var window: any;
         title="Powered by AngularJS 2"
         target="_blank"
       >&nbsp;</a>
-      <a
-          href="https://m.do.co/c/0a4286f8fc50"
-          target="_blank"
-      >
+      <a href="http://firebase.google.com/" target="_blank" title="Proudly running on Firebase">
         <img
-          src="assets/img/digital-ocean.png"
-          alt="DigitalOcean"
+          src="assets/img/lockup.png"
+          alt="Firebase"
         />
       </a>
     </div>
