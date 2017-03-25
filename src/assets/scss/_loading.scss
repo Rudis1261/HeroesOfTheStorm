@@ -1,0 +1,61 @@
+
+@keyframes stipe {
+  0% {
+    width: 0%;
+    background: #54ff00;
+  }
+  30% {
+    background: $bad;
+  }
+  60% {
+    background: #fff;
+  }
+  100% {
+    width: 100%;
+    background: yellow;
+  }
+}
+
+.loading-bar {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	width: 100%;
+	right: 0;
+	content: "";
+	display: block;
+
+	& > .bar {
+		position: relative;
+		content: "";
+		display: block;
+		left: 0;
+		right: 0;
+		height: 2px;
+		width: 0%;
+		animation: stipe 1s infinite linear;
+		box-shadow: 0 0px 13px #fff;
+	}
+
+	& > .loader {
+		margin-top: 150px;
+		position: relative;
+
+		.loading {
+			
+			&:before {
+				width: 60px;
+				height: 60px;
+				margin: -19px 0 0 -30px;
+			}
+			width: 100px;
+			height: 100px;
+			margin: -50px 0 0 -50px;
+
+			small {
+				top: 2px;
+				padding: 4px 14px 6px;
+			}
+	  }
+	}
+}

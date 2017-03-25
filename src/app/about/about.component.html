@@ -16,14 +16,14 @@
   </div>
   <div class="container">
     <ul class="table-of-contents">
-      <li *ngFor="let toc of content | keys">
-        <a (click)="goTo(toc.value.anchor)">{{toc.key}}</a>
+      <li *ngFor="let toc of content | orderBy:'index'">
+        <a (click)="goTo(toc.anchor)">{{toc.$key}}</a>
       </li>
     </ul>
   </div>
-  <div class="container" [id]='section.value.anchor' *ngFor="let section of content | keys">
-    <h2 class="section-header">{{section.key}}</h2>
-    <p class="section-content" [innerHtml]="section.value.content | sanitizeHtml"></p>
+  <div class="container" [id]='section.anchor' *ngFor="let section of content | orderBy:'index'">
+    <h2 class="section-header">{{section.$key}}</h2>
+    <p class="section-content" [innerHtml]="section.content | sanitizeHtml"></p>
     <a class="to-top external text-center" (click)="goTo('top')">To Top</a>
   </div>
 </div>

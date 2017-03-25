@@ -5,7 +5,7 @@ app-social {
   display: block;
   color: $primary;
 
-  .twitter,
+  .tw,
   .twitch {
     .inner {
       padding: 15px;
@@ -15,7 +15,7 @@ app-social {
     }
   }
 
-  .twitter {
+  .tw {
     a {
       color: #fff;
     }
@@ -26,7 +26,7 @@ app-social {
   }
 
   .twitch,
-  .twitter {
+  .tw {
     ul {
       text-align: left;
       margin: 0;

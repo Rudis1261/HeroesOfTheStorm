@@ -16,25 +16,27 @@ export class SocialComponent implements OnInit {
   twitterHandler: any;
   twitchHandler: any;
   streamers: any;
-  loaded: boolean = false;
-
+  
   constructor(private af: AngularFire) {
     this.streamers = [];
+    this.tweets = [];
   }
 
   ngOnInit() {
-    this.twitterHandler = this.af.database.list('/twitter');
+    this.twitterHandler = this.af.database.list('/twitter', {
+      query: {
+        orderByChild: 'id',
+        limitToLast: 30
+      }
+    });
+
     this.twitterHandler.subscribe((data) => {
       this.tweets = data;
-      console.log(data);
-      this.loaded = true;
     });
 
     this.twitchHandler = this.af.database.list('/twitch');
     this.twitchHandler.subscribe((data) => {
       this.streamers = data;
-      console.log(data);
-      this.loaded = true;
     });
   }
 }

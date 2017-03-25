@@ -14,6 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { LoadingBar } from './loading.component';
 import { NavHeaderComponent } from './nav-header.component';
 import { NavFooterComponent } from './nav-footer.component';
+import { AuthGuard } from './auth.service';
 
 import { KeysPipe } from './keys-pipe.component';
 import { LimitToPipe } from './limit-to-pipe.component';
@@ -55,7 +56,10 @@ export const firebaseConfig = {
     JsonpModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [ FIREBASE_PROVIDERS ],
+  providers: [ 
+    FIREBASE_PROVIDERS,
+    AuthGuard
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

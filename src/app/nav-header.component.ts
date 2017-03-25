@@ -56,7 +56,7 @@ export class NavHeaderComponent {
     "label": "Facebook Group",
     "slug": "https://www.facebook.com/groups/hotssa",
     "external": true,
-    "logo": "assets/img/fb.png"
+    "logo": "assets/img/58d66ee968cc1.png"
   }];
 
   menuOpen = false;

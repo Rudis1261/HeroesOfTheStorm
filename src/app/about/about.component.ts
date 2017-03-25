@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { KeysPipe } from '../keys-pipe.component';
 import { SafePipe } from '../safe.component';
 import { SanitizeHtmlPipe } from '../sanitize.component';
 import { LimitToPipe } from '../limit-to-pipe.component';
+import { OrderByPipe } from '../order-by.pipe';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 declare var window: any;
@@ -30,7 +30,7 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.aboutContent = this.af.database.object('/about');
+    this.aboutContent = this.af.database.list('/about');
     this.aboutContent.subscribe((data) => {
       this.content = data;
       this.loaded = true;

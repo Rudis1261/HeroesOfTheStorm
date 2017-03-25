@@ -6,7 +6,8 @@
       ".read": true
     },
     "twitter": {
-      ".read": true
+      ".read": true,
+      ".indexOn": ["id"]
     },
     "twitch_streamers": {
       ".read": true
