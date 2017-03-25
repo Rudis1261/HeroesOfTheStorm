@@ -5,7 +5,6 @@
   <title>Heroes Of The Storm South Africa Community</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet" />
   <style type="text/css">
     html, body {
       background: #031725;
@@ -13,124 +12,79 @@
 
     .loader {
       position: absolute;
-      background: transparent;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .loading {
-      position: relative;
-      top: 50%;
-      left: 50%;
-      width: 200px;
-      margin-top: -200px;
-      margin-left: -100px;
-      text-align: center;
-    }
-
-    .loading img {
-
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 2;
-      -webkit-transform-origin: center center;
-      -moz-transform-origin: center center;
-      -ms-transform-origin: center center;
-      -o-transform-origin: center center;
-      transform-origin: center center;
-
-      animation-duration: 5s;
-      animation-name: rotate;
-      animation-iteration-count: infinite;
-      -webkit-animation-timing-function: linear;
-      animation-timing-function: linear;
-    }
-
-    .loading:before {
-      position: absolute;
-      box-shadow: 0 0 40px 30px lime;
-      display: block;
+      top: calc(50% - 50px);
+      left: calc(50% - 50px);
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      width: 140px;
-      height: 140px;
-      content:"";
-      left: 50%;
-      top: 50%;
-      z-index: 1;
-      margin-left: -70px;
-      margin-top: -78px;
-
-      animation-duration: 7s;
-      animation-name: pulse;
-      animation-iteration-count: infinite;
-      -webkit-animation-timing-function: linear;
-      animation-timing-function: linear;
+      perspective: 800px;
     }
 
-    .loading .loading-logo {
-      margin: 10px auto;
+    .loader .inner {
+      position: absolute;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
     }
 
-    .loading-title {
-      margin-top: -7px;
-      text-align: center;
-      position: relative;
-      font-weight: bold;
-    }
-    .loading-title small {
-      color: #fff;
-      top: 17px;
-      padding: 8px 20px;
-      margin: 0 auto 0;
-      border-radius: 19px;
-      background: rgb(21, 63, 90);
-      position: relative;
-      z-index: 10;
-      box-shadow: inset 0 2px 8px rgba(0,0,0, 0.5);
+    .loader .inner.one {
+      left: 0%;
+      top: 0%;
+      animation: rotate-one 1s linear infinite;
+      border-bottom: 4px solid #fff;
     }
 
-    @keyframes rotate {
-      from {
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-      }
-
-      to {
-        -webkit-transform: rotate(-360deg);
-        -moz-transform: rotate(-360deg);
-        -ms-transform: rotate(-360deg);
-        -o-transform: rotate(-360deg);
-        transform: rotate(-360deg);
-      }
+    .loader .inner.two {
+      right: 0%;
+      top: 0%;
+      animation: rotate-two 1s linear infinite;
+      border-right: 4px solid #fff;
     }
 
-    @keyframes pulse {
+    .loader .inner.three {
+      right: 0%;
+      bottom: 0%;
+      animation: rotate-three 1s linear infinite;
+      border-top: 4px solid #fff;
+    }
+
+    .loader .inner.one.alt {
+      margin: 10px;
+    }
+
+    .loader .inner.two.alt {
+      margin: 10px 0;
+    }
+
+    .loader .inner.three.alt {
+      margin: -10px 10px;
+    }
+
+    @keyframes rotate-one {
       0% {
-        box-shadow: 0 0 80px 10px #008ae5;
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
       }
-
-      30% {
-        box-shadow: 0 0 140px 20px #bce5ff;
-      }
-
-      60% {
-        box-shadow: 0 0 80px 10px rgb(21, 63, 90);
-      }
-
-      90% {
-        box-shadow: 0 0 140px 20px #bada55;
-      }
-
       100% {
-        box-shadow: 0 0 80px 10px #008ae5;
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+      }
+    }
+
+    @keyframes rotate-two {
+      0% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+      }
+      100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+      }
+    }
+
+    @keyframes rotate-three {
+      0% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+      }
+      100% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
       }
     }
   </style>
@@ -140,7 +94,6 @@
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
     ga('create', 'UA-72519118-1', 'auto');
   </script>
 
@@ -149,16 +102,12 @@
 </head>
   <app-root>
     <div class="loader">
-      <div class="loading">
-        <div class="loading-inner">
-          <div>
-            <img class="loading-logo" src="/assets/img/large_icon.png" alt="HOTS" />
-          </div>
-          <div class="loading-title">
-            <span><small>Loading...</small></span>
-          </div>
-        </div>
-      </div>
+      <div class="inner one"></div>
+      <div class="inner one alt"></div>
+      <div class="inner two"></div>
+      <div class="inner two alt"></div>
+      <div class="inner three"></div>
+      <div class="inner three alt"></div>
     </div>
   </app-root>
 </body>

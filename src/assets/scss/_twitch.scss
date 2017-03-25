@@ -12,7 +12,7 @@
   }
 
   &-image {
-    max-width: 50px;
+    width: 50px;
     margin-right: 10px;
     @include align-items(center);
     @include flex(0 0 60px);
@@ -31,7 +31,6 @@
   &-game {
     width: 100%;
     display: block;
-    font-weight: bold;
   }
 
   &-name {
@@ -56,8 +55,8 @@
     height: 9px;
     display: inline-block;
     background: #de1515;
-    box-shadow: 0 0 1px #fff,1px 1px 5px rgba(maroon, 0.5);
-    border: 1px solid maroon;
+    box-shadow: 1px 1px 3px rgba(86, 86, 86, 0.35);
+    border: 1px solid darken(#de1515, 7%);
     @include border-radius(50%);
   }
 }

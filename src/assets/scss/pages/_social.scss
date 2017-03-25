@@ -67,3 +67,9 @@ app-social {
     max-width: $screenDesktop;
   }
 }
+
+@include respond-to($screenTablet) {
+  .social-page h3 {
+    margin-top: 0;
+  }
+}

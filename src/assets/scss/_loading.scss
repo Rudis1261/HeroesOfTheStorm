@@ -1,21 +1,3 @@
-
-@keyframes stipe {
-  0% {
-    width: 0%;
-    background: #54ff00;
-  }
-  30% {
-    background: $bad;
-  }
-  60% {
-    background: #fff;
-  }
-  100% {
-    width: 100%;
-    background: yellow;
-  }
-}
-
 .loading-bar {
 	position: absolute;
 	top: 60px;
@@ -38,25 +20,90 @@
 	}
 
 	& > .loader {
-		margin-top: 150px;
-		margin-bottom: 0;
-		position: relative;
+		position: absolute;
+    background: transparent;
+    top: 150px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+		margin: 0;
 		@include clearfix();
 
 		.loading {
-			
-			&:before {
-				width: 60px;
-				height: 60px;
-				margin: -19px 0 0 -30px;
-			}
+			position: relative;
+      top: 50%;
+      left: 50%;
+      text-align: center;
 			width: 100px;
 			height: 100px;
 			margin: -50px 0 0 -50px;
 
+			img {
+				width: 100%;
+	      height: 100%;
+	      position: relative;
+	      z-index: 2;
+	      -webkit-transform-origin: center center;
+	      -moz-transform-origin: center center;
+	      -ms-transform-origin: center center;
+	      -o-transform-origin: center center;
+	      transform-origin: center center;
+
+	      animation-duration: 5s;
+	      animation-name: rotate;
+	      animation-iteration-count: infinite;
+	      -webkit-animation-timing-function: linear;
+	      animation-timing-function: linear;
+			}
+
+			.loading-logo {
+	      margin: 10px auto;
+	    }
+	
+			&:before {
+				position: absolute;
+	      box-shadow: 0 0 40px 30px lime;
+	      display: block;
+	      border-radius: 50%;
+	      width: 60px;
+				height: 60px;
+	      content:"";
+	      left: 50%;
+	      top: 50%;
+	      z-index: 1;
+	      margin: -19px 0 0 -30px;
+
+	      animation-duration: 7s;
+	      animation-name: pulse;
+	      animation-iteration-count: infinite;
+	      -webkit-animation-timing-function: linear;
+	      animation-timing-function: linear;
+			}
+
+			&-title {
+	      margin-top: -7px;
+	      text-align: center;
+	      position: relative;
+	      font-weight: bold;
+	      small {
+		      color: #fff;
+		      top: 17px;
+		      padding: 8px 20px;
+		      margin: 0 auto 0;
+		      border-radius: 19px;
+		      background: rgba(21, 63, 90, 0.28);
+		      position: relative;
+		      z-index: 10;
+		      box-shadow: inset 0 2px 8px rgba(0,0,0, 0.5);
+		    }
+	    }
+
 			small {
 				top: 2px;
 				padding: 4px 14px 6px;
+				background: rgba(21, 63, 90, 0.28);
 			}
 	  }
 	}

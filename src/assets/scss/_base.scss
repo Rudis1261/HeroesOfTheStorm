@@ -13,9 +13,12 @@ div {
 body,
 html {
   background: #031725;
-  //background: url('assets/img/space_background_496dfbfc7564.jpg');
-  //background-size: cover;
-  //background-attachment: fixed;
+  background: url('assets/img/space_background_496dfbfc7564.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
   padding: $headerHeight 0 0;
 }
 
@@ -29,7 +32,7 @@ html {
   }
 
   &.main-container {
-    min-height: 500px;
+    min-height: 300px;
     background: rgba(5, 18, 27, 0.74);
     margin: 20px auto 0;
     box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.4);
