@@ -17,6 +17,7 @@
                 <div class="twitch-streamer-views"><i class="icon-eye" title="Viewers"></i> {{streamer.viewers}}</div>
                 <div class="twitch-streamer-name">{{streamer.name}}</div>
                 <div class="twitch-streamer-game"><b>LIVE</b> <span class="twitch-streamer-online"></span> playing {{streamer.game}}</div>
+                <div class="twitch-streamer-status" *ngIf="streamer.status">{{streamer.status}}</div>
               </div>
             </div>
             <div class="twitch-streamer" *ngIf='!streamer.online'>
@@ -26,6 +27,7 @@
               <div class="twitch-streamer-detail">
                 <div class="twitch-streamer-name">{{streamer.name}}</div>
                 <div class="twitch-streamer-game">Offline</div>
+                <div class="twitch-streamer-status" *ngIf="streamer.last_online">Last online: {{(streamer.last_online * 1000) | date}}</div>
               </div>
             </div>
           </a>
@@ -41,7 +43,7 @@
       <ul>
         <li *ngFor="let tweet of tweets | orderBy:'id':true">
           <div class="tw-timeline-item">
-            <div class="tw-timeline-user">  
+            <div class="tw-timeline-user">
               <div class="date pull-right">{{tweet.created_at | date}}</div>
               <a target="_blank" [href]="tweet.user.url">
                 <div class="logo">
