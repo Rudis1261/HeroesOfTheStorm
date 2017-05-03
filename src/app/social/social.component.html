@@ -27,7 +27,7 @@
               <div class="twitch-streamer-detail">
                 <div class="twitch-streamer-name">{{streamer.name}}</div>
                 <div class="twitch-streamer-game">Offline</div>
-                <div class="twitch-streamer-status" *ngIf="streamer.last_online">Last online: {{(streamer.last_online * 1000) | date}}</div>
+                <div class="twitch-streamer-status" *ngIf="streamer.last_online">Last online: {{time2str(streamer.last_online)}}</div>
               </div>
             </div>
           </a>
