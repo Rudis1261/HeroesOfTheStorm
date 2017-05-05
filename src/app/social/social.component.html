@@ -7,7 +7,7 @@
     <h3>Twitch Streamers</h3>
     <div class="inner">
       <ul>
-        <li *ngFor="let streamer of streamers | orderBy:'viewers'">
+        <li *ngFor="let streamer of streamers">
           <a target="_blank" href="{{streamer.url}}">
             <div class="twitch-streamer" *ngIf='streamer.online'>
               <div class="twitch-streamer-image">
