@@ -16,12 +16,15 @@ import { NavHeaderComponent } from './nav-header.component';
 import { NavFooterComponent } from './nav-footer.component';
 import { AuthGuard } from './auth.service';
 
+import { LazyComponent } from './lazy.component';
 import { KeysPipe } from './keys-pipe.component';
 import { LimitToPipe } from './limit-to-pipe.component';
 import { LinkifyPipe } from './linkify.component';
 import { SafePipe } from './safe.component';
 import { SanitizeHtmlPipe } from './sanitize.component';
 import { OrderByPipe } from './order-by.pipe';
+import { HeroesComponent } from './heroes/heroes.component';
+import { MatchHelperComponent } from './match-helper/match-helper.component';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -46,7 +49,10 @@ export const firebaseConfig = {
     LinkifyPipe,
     SafePipe,
     SanitizeHtmlPipe,
-    OrderByPipe
+    OrderByPipe,
+    HeroesComponent,
+    MatchHelperComponent,
+    LazyComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,7 @@ export const firebaseConfig = {
     JsonpModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [ 
+  providers: [
     FIREBASE_PROVIDERS,
     AuthGuard
   ],

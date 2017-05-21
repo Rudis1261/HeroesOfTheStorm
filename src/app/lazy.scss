@@ -1,0 +1,9 @@
+:host {
+  border: 2px solid rgba(lighten(purple, 20%), 0.2);
+  display: inline-block;
+
+  &.hero-portrait {
+    width: 80px;
+    height: 100px;
+  }
+}

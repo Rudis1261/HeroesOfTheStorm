@@ -1,0 +1,80 @@
+@import "../../assets/scss/settings";
+@import "../../assets/scss/mixins";
+
+:host {
+  .hero-container {
+    @include flex-wrap(wrap);
+    @include flex-display();
+
+    > div {
+      display: none;
+    }
+
+    .hero {
+      display: block;
+      color: #fff;
+      padding: 15px;
+
+      @include flex(0 0 100%);
+    }
+  }
+
+  .search-container {
+    margin: 10px auto 20px;
+    text-align: center;
+    width: 100%;
+
+    input[type="text"] {
+      outline: none;
+      //border: 1px solid rgba(lighten(purple, 20%), 0.2);
+      border: 1px solid rgba(76, 184, 255, 0.18);
+      color: #fff;
+      font-size: 14px;
+      min-width: 300px;
+      padding: 10px 15px;
+      background: rgba(181, 68, 206, 0.11);
+      box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.66);
+      @include border-radius(20px);
+    }
+  }
+
+  @include respond-to($screenTablet) {
+    .search-container {
+      position: fixed;
+      top: 50px;
+      padding-top: 12px;
+      height: 80px;
+      left: 0;
+      line-height: 60px;
+      background: #111;
+      border-bottom: 1px solid rgba(lighten(purple, 30%), 0.2);
+      box-shadow: 1px 10px 10px rgba(230, 0, 230, 0.08);
+
+      input[type="text"] {
+        background: rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .hero-container {
+      padding-top: 65px;
+    }
+  }
+
+  @include respond-from($screenTablet) {
+    .hero-container .hero {
+      @include flex(0 0 50%);
+    }
+  }
+
+  @include respond-from($screenDesktop) {
+    .hero-container .hero {
+      @include flex(0 0 33%);
+    }
+  }
+
+  @include respond-from($screenJumbo) {
+    .hero-container .hero {
+      @include flex(0 0 25%);
+    }
+  }
+}

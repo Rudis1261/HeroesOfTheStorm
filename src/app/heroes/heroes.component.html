@@ -1,0 +1,20 @@
+<div class="container" *ngIf="!heroes">
+  <loading></loading>
+</div>
+
+<div class="container search-container" *ngIf="heroes && heroes != false">
+  <input type="text" [(ngModel)]="search" [placeholder]="search_placeholder" />
+</div>
+
+<div class="container hero-container" *ngIf="heroes && heroes != false">
+  <div *ngFor="let hero of heroes | keys" [ngClass]="{'hero': !search || (search && hero.value.slug.indexOf(search.toLowerCase()) != -1)}">
+    <lazy
+      [img]="hero.value.images.bust"
+      [width]="image_width"
+      [height]="image_height"
+      *ngIf="hero.value.images.bust"
+      class="hero-portrait"
+    ></lazy>
+    <div class="title">{{hero.value.name}}</div>
+  </div>
+</div>

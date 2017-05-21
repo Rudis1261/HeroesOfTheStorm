@@ -5,6 +5,18 @@
     "about": {
       ".read": true
     },
+    "heroes": {
+      ".read": true,
+      ".indexOn": [".key"]
+    },
+    "hero": {
+      ".read": true,
+      ".indexOn": [".key"]
+    },
+    "maps": {
+      ".read": true,
+      ".indexOn": [".key"]
+    },
     "twitter": {
       ".read": true,
       ".indexOn": ["id"]
