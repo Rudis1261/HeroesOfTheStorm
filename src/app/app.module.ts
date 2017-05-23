@@ -25,6 +25,7 @@ import { SanitizeHtmlPipe } from './sanitize.component';
 import { OrderByPipe } from './order-by.pipe';
 import { HeroesComponent } from './heroes/heroes.component';
 import { MatchHelperComponent } from './match-helper/match-helper.component';
+import { MapsComponent } from './maps/maps.component';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -52,7 +53,8 @@ export const firebaseConfig = {
     OrderByPipe,
     HeroesComponent,
     MatchHelperComponent,
-    LazyComponent
+    LazyComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,

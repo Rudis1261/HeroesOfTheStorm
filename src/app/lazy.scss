@@ -6,4 +6,19 @@
     width: 96px;
     height: 140px;
   }
+
+  &.map-portrait {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 89%;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
 }

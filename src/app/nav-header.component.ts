@@ -48,6 +48,11 @@ export class NavHeaderComponent {
     "external": false,
     "logo": false
   }, {
+    "label": "Maps",
+    "slug": "/maps",
+    "external": false,
+    "logo": false
+  }, {
     "label": "About HOTS",
     "slug": "/about-the-game",
     "external": false,

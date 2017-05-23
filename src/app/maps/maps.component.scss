@@ -1,0 +1,43 @@
+@import "../../assets/scss/settings";
+@import "../../assets/scss/mixins";
+
+:host {
+  .maps-container {
+    margin: 30px auto 0;
+
+    @include flex-display();
+    @include flex-wrap(wrap);
+
+    .map {
+      position: relative;
+      padding: 0 10px;
+      text-align: center;
+      margin: 0 auto 20px;
+
+      @include flex(0 0 auto);
+      @include flex(0 0 100%);
+
+      @include respond-from($screenTablet) {
+        @include flex(0 0 33%);
+      }
+
+      @include respond-from($screenDesktop) {
+        @include flex(0 0 25%);
+      }
+    }
+
+    .title {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.54);
+      height: 50px;
+      color: #fff;
+      bottom: 10px;
+      left: 17px;
+      right: 17px;
+
+      @include flex-display();
+      @include align-items(center);
+      @include justify-content(center);
+    }
+  }
+}

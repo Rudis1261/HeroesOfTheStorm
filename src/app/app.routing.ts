@@ -2,10 +2,11 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Route componenets
-import { HomeComponent }        from './home/home.component';
-import { SocialComponent }      from './social/social.component';
-import { AboutComponent }       from './about/about.component';
-import { HeroesComponent }       from './heroes/heroes.component';
+import { HomeComponent }    from './home/home.component';
+import { SocialComponent }  from './social/social.component';
+import { AboutComponent }   from './about/about.component';
+import { HeroesComponent }  from './heroes/heroes.component';
+import { MapsComponent }    from './maps/maps.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -23,6 +24,9 @@ const appRoutes: Routes = [{
 }, {
   path: 'heroes',
   component: HeroesComponent
+}, {
+  path: 'maps',
+  component: MapsComponent
 }];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);

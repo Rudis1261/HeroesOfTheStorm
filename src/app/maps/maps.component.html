@@ -1,0 +1,16 @@
+<div class="container" *ngIf="!maps">
+  <loading></loading>
+</div>
+
+<div class="container maps-container" *ngIf="maps && maps != false">
+  <div class="map" *ngFor="let map of maps | keys">
+    <lazy
+      [img]="map.value['image-small']"
+      [width]="image_width"
+      [height]="image_height"
+      *ngIf="map.value['image-small']"
+      class="map-portrait"
+    ></lazy>
+    <div class="title">{{map.value.title}}</div>
+  </div>
+</div>
