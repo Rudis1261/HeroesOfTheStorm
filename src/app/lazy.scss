@@ -12,6 +12,7 @@
     overflow: hidden;
     padding-top: 89%;
     position: relative;
+    background: rgba(#000, 0.5);
 
     img {
       position: absolute;
@@ -19,6 +20,7 @@
       left: 0;
       right: 0;
       bottom: 0;
+      width: 100%!important;
     }
   }
 }

@@ -5,7 +5,7 @@ declare var Image:any;
 @Component({
   selector: 'lazy',
   template: `
-  <img class="lazy-loader {{style}}" [src]="dataSrc" [style.width]="width" [style.height]="height" alt="image" />
+  <img class="lazy-loader {{style}}" [ngClass]="{'loaded': loaded}" [src]="dataSrc" [style.width]="width" [style.height]="height" alt="image" />
  `,
   styleUrls: ['./lazy.scss']
 })
@@ -17,6 +17,7 @@ export class LazyComponent implements OnInit {
   @Input() async: boolean = false;
   @Input() style: any = false;
   dataSrc: string;
+  loaded: any = false;
 
   constructor() {
     this.dataSrc = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOU09B9CgACOQFaAVjiZgAAAABJRU5ErkJggg==";
@@ -26,6 +27,7 @@ export class LazyComponent implements OnInit {
     var curImg = new Image();
     curImg.src = data;
     curImg.onload = () => {
+      this.loaded = true;
       this.dataSrc = data;
     }
   }
