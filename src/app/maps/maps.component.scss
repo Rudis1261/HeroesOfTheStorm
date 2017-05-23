@@ -28,12 +28,14 @@
 
     .title {
       position: absolute;
-      background: rgba(0, 0, 0, 0.54);
+      background: rgba(0, 0, 0, 0.4);
       height: 50px;
       color: #fff;
       bottom: 10px;
       left: 17px;
       right: 17px;
+      border: 1px solid rgba(0,0,0, 0.4);
+      box-shadow: 1px 1px 5px rgba(55, 10, 66, 0.65);
 
       @include flex-display();
       @include align-items(center);
