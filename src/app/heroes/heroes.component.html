@@ -4,6 +4,7 @@
 
 <div class="container search-container" *ngIf="heroes && heroes != false">
   <input type="text" [(ngModel)]="search" [placeholder]="search_placeholder" />
+  <i class="icon-backspace" *ngIf="search && search !== ''" (click)="search=''"></i>
 </div>
 
 <div class="container hero-container" *ngIf="heroes && heroes != false">

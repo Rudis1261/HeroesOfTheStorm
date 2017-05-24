@@ -16,6 +16,10 @@
       width: 140px;
       height: (140px * $ratio);
     }
+
+    img {
+      box-shadow: 1px 1px 5px rgba(255, 0, 0, 0.56);
+    }
   }
 
   &.map-portrait {
