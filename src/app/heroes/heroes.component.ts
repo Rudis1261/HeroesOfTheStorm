@@ -23,4 +23,18 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  find(hero) {
+    if (!this.search) {
+      return false;
+    }
+
+    let search = this.search.toLowerCase();
+
+    return (hero.slug.indexOf(search) != -1) ||
+           (hero.name.toLowerCase().indexOf(search) != -1) ||
+           (hero.title.toLowerCase().indexOf(search) != -1) ||
+           (hero.role.slug.indexOf(search) != -1) ||
+           (hero.type.slug.indexOf(search) != -1);
+  }
 }

@@ -25,7 +25,7 @@
 
   <div
     *ngFor="let hero of heroes | keys"
-    [ngClass]="{'hero': !search || (search && hero.value.slug.indexOf(search.toLowerCase()) != -1) || (search && hero.value.name.toLowerCase().indexOf(search.toLowerCase()) != -1) || (search && hero.value.title.toLowerCase().indexOf(search.toLowerCase()) != -1)}">
+    [ngClass]="{'hero': !search || (search && find(hero.value))}">
     <lazy
       [img]="hero.value.images.bust"
       [width]="image_width"
