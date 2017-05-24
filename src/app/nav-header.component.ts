@@ -43,13 +43,18 @@ export class NavHeaderComponent {
     "external": false,
     "logo": false
   }, {
-    "label": "Social",
-    "slug": "/social",
+    "label": "Heroes",
+    "slug": "/heroes",
     "external": false,
     "logo": false
   }, {
     "label": "Maps",
     "slug": "/maps",
+    "external": false,
+    "logo": false
+  }, {
+    "label": "Social",
+    "slug": "/social",
     "external": false,
     "logo": false
   }, {

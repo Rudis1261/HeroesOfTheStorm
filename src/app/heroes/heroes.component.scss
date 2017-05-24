@@ -10,12 +10,68 @@
       display: none;
     }
 
+    .test {
+      display: block;
+    }
+
     .hero {
       display: block;
       color: #fff;
       padding: 15px;
 
       @include flex(0 0 100%);
+      @include flex-display();
+
+      lazy {
+        @include flex(0 0 auto);
+      }
+
+      .content {
+        margin: 10px 10px 10px 0;
+        padding: 15px;
+        border: 1px solid rgba(#000, 0.8);
+        border-left: none;
+        background: rgba(#000, 0.2);
+        position: relative;
+        @include flex(1 0 auto);
+        @include border-radius(0 5px 5px 0);
+
+        .name {
+          font-size: 24px;
+        }
+
+        .title {
+          font-size: 14px;
+          color: darken(#fff, 3%);
+        }
+
+        .role {
+          position: absolute;
+          bottom: 0px;
+          left: -50px;
+          z-index: 1;
+
+          &-title {
+            font-size: 10px;
+            text-align: center;
+            line-height: 6px;
+          }
+
+          &:after {
+            background: rgba(35, 0, 189, 0.59);
+            position: relative;
+            display: block;
+            content: "";
+            box-shadow: 1px 1px 10px 11px rgba(35, 0, 189, 0.59);
+            width: 40px;
+            height: 40px;
+            float: left;
+            margin: -60px 0 0 10px;
+            z-index: -1;
+            @include border-radius(50%);
+          }
+        }
+      }
     }
   }
 
@@ -74,7 +130,7 @@
 
   @include respond-from($screenJumbo) {
     .hero-container .hero {
-      @include flex(0 0 25%);
+      @include flex(0 0 33%);
     }
   }
 }

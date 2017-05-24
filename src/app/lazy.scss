@@ -1,10 +1,21 @@
+@import "../assets/scss/settings";
+@import "../assets/scss/mixins";
+
+
 :host {
   border: 2px solid rgba(lighten(purple, 20%), 0.2);
   display: inline-block;
 
   &.hero-portrait {
+
+    $ratio: 1.456;
     width: 96px;
-    height: 140px;
+    height: (96px * $ratio);
+
+    @include respond-from($screenTablet) {
+      width: 140px;
+      height: (140px * $ratio);
+    }
   }
 
   &.map-portrait {

@@ -7,7 +7,25 @@
 </div>
 
 <div class="container hero-container" *ngIf="heroes && heroes != false">
-  <div *ngFor="let hero of heroes | keys" [ngClass]="{'hero': !search || (search && hero.value.slug.indexOf(search.toLowerCase()) != -1)}">
+<!--
+  <div class="test">
+    <span class="hero-role assasin small"></span>
+    <span class="hero-role warrior small"></span>
+    <span class="hero-role support small"></span>
+    <span class="hero-role specialist small"></span>
+  </div>
+
+  <div class="test">
+    <br><span class="hero-stats damage"></span>
+    <br><span class="hero-stats utility"></span>
+    <br><span class="hero-stats survivability"></span>
+    <br><span class="hero-stats complexity"></span>
+  </div>
+ -->
+
+  <div
+    *ngFor="let hero of heroes | keys"
+    [ngClass]="{'hero': !search || (search && hero.value.slug.indexOf(search.toLowerCase()) != -1) || (search && hero.value.name.toLowerCase().indexOf(search.toLowerCase()) != -1) || (search && hero.value.title.toLowerCase().indexOf(search.toLowerCase()) != -1)}">
     <lazy
       [img]="hero.value.images.bust"
       [width]="image_width"
@@ -15,6 +33,13 @@
       *ngIf="hero.value.images.bust"
       class="hero-portrait"
     ></lazy>
-    <div class="title">{{hero.value.name}}</div>
+    <div class="content">
+      <div class="name">{{hero.value.name}}</div>
+      <div class="title">{{hero.value.title}}</div>
+      <div class="role" [title]="hero.value.role.description">
+        <div class="hero-role tiny {{hero.value.role.slug}}"></div>
+        <div class="role-title">{{hero.value.role.name}}</div>
+      </div>
+    </div>
   </div>
 </div>
