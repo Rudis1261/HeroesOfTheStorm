@@ -5,6 +5,12 @@ app-social {
   display: block;
   color: $primary;
 
+  .social-page {
+    &.row {
+      @include justify-content(center);
+    }
+  }
+
   .tw,
   .twitch {
     .inner {

@@ -162,13 +162,13 @@ input[type="phone"] {
     margin: 0 10px 20px;
   }
 
-  .col-1 { @include flex(0 0 10%); }
-  .col-2 { @include flex(0 0 20%); }
-  .col-3 { @include flex(0 0 30%); }
-  .col-4 { @include flex(0 0 40%); }
-  .col-5 { @include flex(0 0 50%); }
-  .col-6 { @include flex(0 0 60%); }
-  .col-7 { @include flex(0 0 70%); }
-  .col-8 { @include flex(0 0 80%); }
-  .col-9 { @include flex(0 0 90%); }
+  .col-1 { @include flex(0 0 10%); max-width: 9.99%; }
+  .col-2 { @include flex(0 0 20%); max-width: 19.99%; }
+  .col-3 { @include flex(0 0 30%); max-width: 29.99%; }
+  .col-4 { @include flex(0 0 40%); max-width: 39.99%; }
+  .col-5 { @include flex(0 0 50%); max-width: 49.99%; }
+  .col-6 { @include flex(0 0 60%); max-width: 59.99%; }
+  .col-7 { @include flex(0 0 70%); max-width: 69.99%; }
+  .col-8 { @include flex(0 0 80%); max-width: 79.99%; }
+  .col-9 { @include flex(0 0 90%); max-width: 89.99%; }
 }
