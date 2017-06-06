@@ -5,28 +5,23 @@
 <div class="container search-container" *ngIf="heroes && heroes != false">
   <input type="text" [(ngModel)]="search" [placeholder]="search_placeholder" />
   <i class="icon-backspace" *ngIf="search && search !== ''" (click)="search=''"></i>
+
+  <div class="classSelector">
+    <div
+      *ngFor="let role of roles"
+      class="hero-role tiny {{role | strtolower}}"
+      (click)="searchByRole(role)"
+      [ngClass]="{'active': activeClassSelection==role}">
+      <div class="title">{{role | ucfirst}}</div>
+    </div>
+
+  </div>
 </div>
 
 <div class="container hero-container" *ngIf="heroes && heroes != false">
-<!--
-  <div class="test">
-    <span class="hero-role assasin small"></span>
-    <span class="hero-role warrior small"></span>
-    <span class="hero-role support small"></span>
-    <span class="hero-role specialist small"></span>
-  </div>
-
-  <div class="test">
-    <br><span class="hero-stats damage"></span>
-    <br><span class="hero-stats utility"></span>
-    <br><span class="hero-stats survivability"></span>
-    <br><span class="hero-stats complexity"></span>
-  </div>
- -->
-
   <div
     *ngFor="let hero of heroes | keys"
-    [ngClass]="{'hero': !search || (search && find(hero.value))}">
+    [ngClass]="{'hero': (!search && !activeClassSelection) || find(hero.value)}">
     <lazy
       [img]="hero.value.images.bust"
       [width]="image_width"

@@ -26,6 +26,8 @@ import { OrderByPipe } from './order-by.pipe';
 import { HeroesComponent } from './heroes/heroes.component';
 import { MatchHelperComponent } from './match-helper/match-helper.component';
 import { MapsComponent } from './maps/maps.component';
+import { UcfirstPipe } from './ucfirst.pipe';
+import { StrtolowerPipe } from './strtolower.pipe';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -54,7 +56,9 @@ export const firebaseConfig = {
     HeroesComponent,
     MatchHelperComponent,
     LazyComponent,
-    MapsComponent
+    MapsComponent,
+    UcfirstPipe,
+    StrtolowerPipe
   ],
   imports: [
     BrowserModule,

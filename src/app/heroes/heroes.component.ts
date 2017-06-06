@@ -12,29 +12,68 @@ export class HeroesComponent implements OnInit {
   image_width: any = '100%';
   image_height: any = '100%';
   search: any = '';
+  activeClassSelection: any = false;
   search_placeholder: any = 'Find a hero by name';
+  roles: Array<String>;
 
   constructor(private http:Http) {
     this.http.get('assets/feeds/heroes.json').subscribe((data) => {
       this.heroes = data.json();
       console.log(this.heroes);
     });
+
+    this.roles = [
+      'Assassin',
+      'Warrior',
+      'Support',
+      'Specialist'
+    ];
   }
 
   ngOnInit() {
   }
 
+  searchByRole(role) {
+    console.log('Search by role', role);
+    if (this.activeClassSelection == role) {
+      this.activeClassSelection = false;
+    } else {
+      this.activeClassSelection = role;
+    }
+  }
+
   find(hero) {
-    if (!this.search) {
+    if (!this.search && !this.activeClassSelection) {
       return false;
     }
 
-    let search = this.search.toLowerCase();
+    let search = (this.search && this.search !== '') ? this.search.toLowerCase() : false;
+    let role = (this.activeClassSelection) ? this.activeClassSelection.toLowerCase() : false;
+    let foundSearchTerm = false;
+    let foundRoleSearch = false;
 
-    return (hero.slug.indexOf(search) != -1) ||
-           (hero.name.toLowerCase().indexOf(search) != -1) ||
-           (hero.title.toLowerCase().indexOf(search) != -1) ||
-           (hero.role.slug.indexOf(search) != -1) ||
-           (hero.type.slug.indexOf(search) != -1);
+    if (search) {
+      foundSearchTerm = (hero.slug.indexOf(search) != -1) ||
+                         (hero.name.toLowerCase().indexOf(search) != -1) ||
+                         (hero.title.toLowerCase().indexOf(search) != -1) ||
+                         (hero.role.slug.indexOf(search) != -1) ||
+                         (hero.type.slug.indexOf(search) != -1);
+    }
+
+    if (role) {
+      foundRoleSearch = (hero.role.slug.indexOf(role) != -1);
+    }
+
+    if (search && role) {
+      return foundRoleSearch && foundSearchTerm;
+    }
+
+    if (search && !role) {
+      return foundSearchTerm;
+    }
+
+    if (!search && role) {
+      return foundRoleSearch;
+    }
   }
 }
