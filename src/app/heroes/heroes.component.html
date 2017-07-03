@@ -20,8 +20,21 @@
 
 <div class="container hero-container" *ngIf="heroes && heroes != false">
   <div
+    class="hero"
     *ngFor="let hero of heroes | keys"
-    [ngClass]="{'hero': (!search && !activeClassSelection) || find(hero.value)}">
+    [ngClass]="{'hero': (!search && !activeClassSelection) || find(hero.value)}"
+    (click)="select(hero.value)"
+  >
+
+    <div class="hero-detail-container" *ngIf="selected && selected !== false && selected===hero.value">
+      <div class="close">&times;</div>
+      <div class="inner">
+        <div class="name">{{selected.name}}</div>
+        <div class="title">{{selected.title}}</div>
+        <div class="description" *ngIf="heroDescription">{{heroDescription}}</div>
+      </div>
+    </div>
+
     <lazy
       [img]="hero.value.images.bust"
       [width]="image_width"
@@ -29,6 +42,7 @@
       *ngIf="hero.value.images.bust"
       class="hero-portrait"
     ></lazy>
+
     <div class="content">
       <div class="name">{{hero.value.name}}</div>
       <div class="title">{{hero.value.title}}</div>

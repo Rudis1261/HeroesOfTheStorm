@@ -20,12 +20,62 @@
     @include flex-wrap(wrap);
     @include flex-display();
 
+    .hero-detail-container {
+      position: absolute;
+      background: #06051b;
+      top: -20px;
+      right: -20px;
+      bottom: -20px;
+      left: -20px;
+      z-index: 3;
+      border: 2px solid rgba(230,0,230, 0.2);
+      padding: 10px 15px;
+      box-shadow: 1px 1px 40px 5px rgba(0,0,0, 1);
+      @include border-radius(2px);
+
+      .close {
+        float: right;
+        width: 32px;
+        height: 32px;
+        margin: -16px -5px;
+        font-size: 22px;
+        text-align: center;
+        line-height: 32px;
+        cursor: pointer;
+        background: rgba(53, 23, 38, 0.8);
+        border: 1px solid rgba(255,255,255, 0.1);
+        box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.82);
+        @include border-radius(2px);
+      }
+
+      .description {
+        margin: 15px 0 0;
+      }
+    }
+
+    .hero {
+      position: relative;
+      cursor: pointer;
+    }
+
     > div {
       display: none;
     }
 
     .test {
       display: block;
+    }
+
+    .hero .content,
+    .hero-detail-container .inner {
+      .name {
+        font-size: 24px;
+      }
+
+      .title {
+        font-size: 14px;
+        color: darken(#fff, 3%);
+      }
     }
 
     .hero {
@@ -49,15 +99,6 @@
         position: relative;
         @include flex(1 0 auto);
         @include border-radius(0 5px 5px 0);
-
-        .name {
-          font-size: 24px;
-        }
-
-        .title {
-          font-size: 14px;
-          color: darken(#fff, 3%);
-        }
 
         .role {
           position: absolute;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
 
 @Component({
   selector: 'app-heroes',
@@ -15,8 +17,10 @@ export class HeroesComponent implements OnInit {
   activeClassSelection: any = false;
   search_placeholder: any = 'Find a hero by name';
   roles: Array<String>;
+  selected: any = false;
+  heroDescription: any = false;
 
-  constructor(private http:Http) {
+  constructor(private http:Http, private af: AngularFire) {
     this.http.get('assets/feeds/heroes.json').subscribe((data) => {
       this.heroes = data.json();
       console.log(this.heroes);
@@ -40,6 +44,28 @@ export class HeroesComponent implements OnInit {
     } else {
       this.activeClassSelection = role;
     }
+  }
+
+  select(hero) {
+    if(!hero) {
+      return false;
+    }
+
+    this.heroDescription = false;
+
+    if (hero == this.selected) {
+      return this.deselect();
+    }
+
+    this.selected = hero;
+    this.af.database.object('/hero/' + hero.slug + '/description').subscribe((data) => {
+      this.heroDescription = data.$value;
+    });
+  }
+
+  deselect() {
+    this.selected = false;
+    console.log("DESELECTED", this.selected);
   }
 
   find(hero) {
