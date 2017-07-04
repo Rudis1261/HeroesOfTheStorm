@@ -32,6 +32,14 @@
   border-radius: $radius;
 }
 
+@mixin prefix($key, $value){
+  -webkit-#{$key}: $value;
+  -moz-#{$key}: $value;
+  -ms-#{$key}s: $value;
+  -o-#{$key}s: $value;
+  #{$key}: $value;
+}
+
 @mixin box-sizing($boxsizing){
   -webkit-box-sizing: $boxsizing;
   -moz-box-sizing: $boxsizing;
@@ -103,6 +111,18 @@
 
 @mixin respond-to($size) {
   @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include respond-to($screenTablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include respond-from($screenTablet) {
     @content;
   }
 }

@@ -31,7 +31,16 @@
       <div class="inner">
         <div class="name">{{selected.name}}</div>
         <div class="title">{{selected.title}}</div>
-        <div class="description" *ngIf="heroDescription">{{heroDescription}}</div>
+        <div class="inline-loader" [ngClass]="{loading: heroDescription==false || heroStats==false}"><i class="icon-loader1 icon-spin"></i></div>
+        <div class="description" *ngIf="heroDescription && heroStats">{{heroDescription}}</div>
+        <div class="stats" *ngIf="heroDescription && heroStats">
+          <div class="item" *ngFor="let stat of heroStats | keys">
+            <span>{{stat.key | ucfirst}}</span>
+            <div class="inner" title="{{stat.value}} out of 10">
+              <span [ngStyle]="{'width': ((stat.value / 10) * 100) + '%'}">&nbsp;</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

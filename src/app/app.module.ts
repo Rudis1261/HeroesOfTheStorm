@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule }  from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../environments/environment';
 import { Subject } from 'rxjs/Subject';
 import { FIREBASE_PROVIDERS, AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -28,15 +29,6 @@ import { MatchHelperComponent } from './match-helper/match-helper.component';
 import { MapsComponent } from './maps/maps.component';
 import { UcfirstPipe } from './ucfirst.pipe';
 import { StrtolowerPipe } from './strtolower.pipe';
-
-// AF2 Settings
-export const firebaseConfig = {
-  apiKey: "AIzaSyA1N7Ju8sX_Hr0QGugmyL9qFdpINmGwqNg",
-  authDomain: "heroes-9921d.firebaseapp.com",
-  databaseURL: "https://heroes-9921d.firebaseio.com",
-  storageBucket: "heroes-9921d.appspot.com",
-  messagingSenderId: "15381434532"
-};
 
 @NgModule({
   declarations: [
@@ -66,7 +58,7 @@ export const firebaseConfig = {
     HttpModule,
     AppRouting,
     JsonpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
     FIREBASE_PROVIDERS,

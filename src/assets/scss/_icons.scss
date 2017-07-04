@@ -1,10 +1,20 @@
+$icomoon-font-path: "assets/scss/fonts/" !default;
+$icomoon-font-hash: "jy9jmm";
+
+$icon-loader1: "\e900";
+$icon-search: "\e901";
+$icon-backspace: "\e902";
+$icon-loader2: "\e903";
+$icon-eye-blocked: "\e904";
+$icon-eye: "\e905";
+
 @font-face {
   font-family: 'icomoon';
-  src:  url('assets/scss/fonts/icomoon.eot?pk923i');
-  src:  url('assets/scss/fonts/icomoon.eot?pk923i#iefix') format('embedded-opentype'),
-    url('assets/scss/fonts/icomoon.ttf?pk923i') format('truetype'),
-    url('assets/scss/fonts/icomoon.woff?pk923i') format('woff'),
-    url('assets/scss/fonts/icomoon.svg?pk923i#icomoon') format('svg');
+  src:  url('#{$icomoon-font-path}/icomoon.eot?#{$icomoon-font-hash}');
+  src:  url('#{$icomoon-font-path}/icomoon.eot?#{$icomoon-font-hash}#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/icomoon.ttf?#{$icomoon-font-hash}') format('truetype'),
+    url('#{$icomoon-font-path}/icomoon.woff?#{$icomoon-font-hash}') format('woff'),
+    url('#{$icomoon-font-path}/icomoon.svg?#{$icomoon-font-hash}#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,12 +34,38 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-backspace:before {
-  content: "\e906";
+.icon-spin {
+  display: inline-block;
+  @include prefix(animation, spin 1s infinite linear);
 }
-.icon-search:before {
-  content: "\e904";
+
+.icon-loader1 {
+  &:before {
+    content: $icon-loader1;
+  }
 }
-.icon-eye:before {
-  content: "\e9ce";
+.icon-search {
+  &:before {
+    content: $icon-search;
+  }
+}
+.icon-backspace {
+  &:before {
+    content: $icon-backspace;
+  }
+}
+.icon-loader2 {
+  &:before {
+    content: $icon-loader2;
+  }
+}
+.icon-eye-blocked {
+  &:before {
+    content: $icon-eye-blocked;
+  }
+}
+.icon-eye {
+  &:before {
+    content: $icon-eye;
+  }
 }

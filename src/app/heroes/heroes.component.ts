@@ -19,6 +19,7 @@ export class HeroesComponent implements OnInit {
   roles: Array<String>;
   selected: any = false;
   heroDescription: any = false;
+  heroStats: any = false;
 
   constructor(private http:Http, private af: AngularFire) {
     this.http.get('assets/feeds/heroes.json').subscribe((data) => {
@@ -52,14 +53,20 @@ export class HeroesComponent implements OnInit {
     }
 
     this.heroDescription = false;
+    this.heroStats = false;
 
     if (hero == this.selected) {
       return this.deselect();
     }
 
     this.selected = hero;
+    
     this.af.database.object('/hero/' + hero.slug + '/description').subscribe((data) => {
       this.heroDescription = data.$value;
+    });
+
+    this.af.database.object('/hero/' + hero.slug + '/stats').subscribe((data) => {
+      this.heroStats = data;
     });
   }
 
