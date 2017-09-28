@@ -25,13 +25,20 @@
       background: #06051b;
       top: -20px;
       right: -20px;
-      bottom: -20px;
       left: -20px;
-      z-index: 3;
+      min-height: 250px;
+      z-index: 100;
       border: 2px solid rgba(230,0,230, 0.2);
       padding: 10px 15px;
       box-shadow: 1px 1px 40px 5px rgba(0,0,0, 1);
       @include border-radius(2px);
+
+      @include mobile {
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 3;
+      }
 
       .close {
         float: right;
@@ -48,8 +55,54 @@
         @include border-radius(2px);
       }
 
+      .inline-loader {
+        display: none;
+        font-size: 40px;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        padding: 40px 0 0;
+
+        .icon-spin {
+          width: 40px;
+          height: 40px;
+          line-height: 41px;
+        }
+
+        &.loading {
+          display: inline-block;
+        }
+      }
+
       .description {
         margin: 15px 0 0;
+      }
+
+      .stats {
+        .item {
+          display: block;
+          margin: 8px 0 4px;
+
+          > span {
+            color: #19a4ff;
+            font-size: 11px;
+            text-transform: uppercase;
+          }
+
+          .inner {
+            height: 10px;
+            background: rgba(0, 230, 217, 0.38);
+            border: 1px solid rgba(255, 255, 255, 0.44);
+            width: 100%;
+            display: inline-block;
+            overflow: hidden;
+
+            span {
+              display: inline-block;
+              background: rgb(136, 0, 74);
+            }
+          }
+        }
       }
     }
 
@@ -193,7 +246,7 @@
     }
   }
 
-  @include respond-to($screenTablet) {
+  @include mobile {
     .search-container {
       position: fixed;
       top: 50px;
