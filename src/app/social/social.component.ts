@@ -4,6 +4,7 @@ import { KeysPipe } from '../keys-pipe.component';
 import { SafePipe } from '../safe.component';
 import { LinkifyPipe } from '../linkify.component';
 import { OrderByPipe } from '../order-by.pipe';
+import { Title } from '@angular/platform-browser';
 
 declare var moment: any;
 
@@ -19,7 +20,9 @@ export class SocialComponent implements OnInit {
   twitchHandler: any;
   streamers: any;
 
-  constructor(private af: AngularFire) {
+  constructor(private af: AngularFire, private titleService: Title) {
+    this.titleService.setTitle('Heroes of the Storm ZA | Social');
+
     this.streamers = [];
     this.tweets = [];
   }

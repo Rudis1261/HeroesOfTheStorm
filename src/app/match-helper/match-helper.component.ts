@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-match-helper',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchHelperComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Heroes of the Storm ZA | Match Assistant');
+  }
 
   ngOnInit() {
   }

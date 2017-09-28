@@ -4,6 +4,7 @@ import { SanitizeHtmlPipe } from '../sanitize.component';
 import { LimitToPipe } from '../limit-to-pipe.component';
 import { OrderByPipe } from '../order-by.pipe';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Title } from '@angular/platform-browser';
 
 declare var window: any;
 
@@ -24,9 +25,10 @@ export class AboutComponent implements OnInit {
     window.location.hash = location;
   }
 
-  constructor(private af: AngularFire) {
+  constructor(private af: AngularFire, private titleService: Title) {
     this.title = "About the Game";
     this.subTitle = "Heroes of the Storm"
+    this.titleService.setTitle('Heroes of the Storm ZA | About');
   }
 
   ngOnInit() {

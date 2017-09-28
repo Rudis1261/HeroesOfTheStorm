@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-maps',
@@ -12,7 +13,9 @@ export class MapsComponent implements OnInit {
   image_height: any = "100%";
   image_width: any = "auto";
 
-  constructor(private http:Http) {
+  constructor(private http:Http, private titleService: Title) {
+    this.titleService.setTitle('Heroes of the Storm ZA | Maps');
+
     this.http.get('assets/feeds/maps.json').subscribe((data) => {
       this.maps = data.json();
     });

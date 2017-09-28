@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-heroes',
@@ -20,10 +20,12 @@ export class HeroesComponent implements OnInit {
   selected: any = false;
   heroDescription: any = false;
 
-  constructor(private http:Http, private af: AngularFire) {
+  constructor(private http:Http, private af: AngularFire, private titleService: Title) {
+    this.titleService.setTitle('Heroes of the Storm ZA | Heroes');
+
     this.http.get('assets/feeds/heroes.json').subscribe((data) => {
       this.heroes = data.json();
-      console.log(this.heroes);
+      //console.log(this.heroes);
     });
 
     this.roles = [
@@ -38,7 +40,7 @@ export class HeroesComponent implements OnInit {
   }
 
   searchByRole(role) {
-    console.log('Search by role', role);
+    //console.log('Search by role', role);
     if (this.activeClassSelection == role) {
       this.activeClassSelection = false;
     } else {
@@ -65,7 +67,7 @@ export class HeroesComponent implements OnInit {
 
   deselect() {
     this.selected = false;
-    console.log("DESELECTED", this.selected);
+    //console.log("DESELECTED", this.selected);
   }
 
   find(hero) {
