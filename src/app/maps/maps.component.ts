@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Title } from '@angular/platform-browser';
 
+import { AngularFireDatabase } from 'angularfire2/database'
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
@@ -13,11 +16,11 @@ export class MapsComponent implements OnInit {
   image_height: any = "100%";
   image_width: any = "auto";
 
-  constructor(private http:Http, private titleService: Title) {
+  constructor(private http:Http, private titleService: Title, private af: AngularFireDatabase) {
     this.titleService.setTitle('Heroes of the Storm ZA | Maps');
 
-    this.http.get('assets/feeds/maps.json').subscribe((data) => {
-      this.maps = data.json();
+    this.af.list('/maps').valueChanges().subscribe(data => {
+      this.maps = data;
     });
   }
 

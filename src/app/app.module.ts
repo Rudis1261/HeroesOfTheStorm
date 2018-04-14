@@ -3,9 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule }  from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { environment } from '../environments/environment';
 import { Subject } from 'rxjs/Subject';
-import { FIREBASE_PROVIDERS, AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth'
+import { AngularFireDatabase } from 'angularfire2/database'
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { environment } from '../environments/environment';
+
 
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
@@ -58,10 +63,12 @@ import { StrtolowerPipe } from './strtolower.pipe';
     HttpModule,
     AppRouting,
     JsonpModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [
-    FIREBASE_PROVIDERS,
+    AngularFireDatabase,
+    AngularFireAuth,
     AuthGuard
   ],
   bootstrap: [ AppComponent ]

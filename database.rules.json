@@ -13,6 +13,9 @@
       ".read": true,
       ".indexOn": [".key"]
     },
+    "json": {
+      ".read": true
+    },
     "maps": {
       ".read": true,
       ".indexOn": [".key"]

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Title } from '@angular/platform-browser';
+
+import { AngularFireDatabase } from 'angularfire2/database'
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-heroes',
@@ -21,12 +23,13 @@ export class HeroesComponent implements OnInit {
   heroDescription: any = false;
   heroStats: any = false;
 
-  constructor(private http:Http, private af: AngularFire, private titleService: Title) {
+  constructor(private http:Http, private af: AngularFireDatabase, private titleService: Title) {
     this.titleService.setTitle('Heroes of the Storm ZA | Heroes');
 
-    this.http.get('assets/feeds/heroes.json').subscribe((data) => {
-      this.heroes = data.json();
-      //console.log(this.heroes);
+    this.af.object('/json').valueChanges().subscribe(data => {
+      this.http.get(data['heroes_detail_json']).subscribe(data => {
+        this.heroes = data.json();
+      });
     });
 
     this.roles = [
@@ -62,19 +65,18 @@ export class HeroesComponent implements OnInit {
     }
 
     this.selected = hero;
-    
-    this.af.database.object('/hero/' + hero.slug + '/description').subscribe((data) => {
-      this.heroDescription = data.$value;
+
+    this.af.object('/hero/' + hero.slug + '/description').valueChanges().subscribe(data => {
+      this.heroDescription = data;
     });
 
-    this.af.database.object('/hero/' + hero.slug + '/stats').subscribe((data) => {
+    this.af.object('/hero/' + hero.slug + '/stats').valueChanges().subscribe(data => {
       this.heroStats = data;
     });
   }
 
   deselect() {
     this.selected = false;
-    //console.log("DESELECTED", this.selected);
   }
 
   find(hero) {
@@ -91,12 +93,12 @@ export class HeroesComponent implements OnInit {
       foundSearchTerm = (hero.slug.indexOf(search) != -1) ||
                          (hero.name.toLowerCase().indexOf(search) != -1) ||
                          (hero.title.toLowerCase().indexOf(search) != -1) ||
-                         (hero.role.slug.indexOf(search) != -1) ||
-                         (hero.type.slug.indexOf(search) != -1);
+                         (hero.baseHeroInfo.role.slug.indexOf(search) != -1) ||
+                         (hero.baseHeroInfo.type.slug.indexOf(search) != -1);
     }
 
     if (role) {
-      foundRoleSearch = (hero.role.slug.indexOf(role) != -1);
+      foundRoleSearch = (hero.baseHeroInfo.role.slug.indexOf(role) != -1);
     }
 
     if (search && role) {

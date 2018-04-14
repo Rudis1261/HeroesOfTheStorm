@@ -2,7 +2,7 @@
   <loading></loading>
 </div>
 
-<div class="row social-page" *ngIf="streamers.length > 0 && tweets.length > 0">
+<div class="row social-page" *ngIf="true || streamers.length > 0 && tweets.length > 0">
   <div class="col-4 twitch">
     <h3>Twitch Streamers</h3>
     <div class="inner">
@@ -47,14 +47,14 @@
               <div class="date pull-right">{{tweet.created_at | date}}</div>
               <a target="_blank" [href]="tweet.user.url">
                 <div class="logo">
-                  <img [src]="tweet.user.profile_image_url_https" [alt]="tweet.user.screen_name" />
+                  <img [src]="tweet.user.profile_image_url_https" *ngIf="tweet.user.profile_image_url_https && tweet.user.profile_image_url_https !== 'false'" [alt]="tweet.user.screen_name" />
                 </div>
                 <div class="name">@{{tweet.user.screen_name}}</div>
               </a>
             </div>
             <div class="tw-timeline-body" [innerHtml]="tweet.text | linkify"></div>
             <div class="tw-timeline-img" *ngIf="tweet.entities.media && tweet.entities.media.length > 0">
-              <img [src]="tweet.entities.media[0].media_url_https" alt="image" />
+              <img [src]="tweet.entities.media[0].media_url_https" *ngIf="tweet.entities.media[0].media_url_https && tweet.entities.media[0].media_url_https !== 'false'" alt="image" />
             </div>
           </div>
         </li>

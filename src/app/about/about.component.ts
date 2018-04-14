@@ -3,8 +3,10 @@ import { SafePipe } from '../safe.component';
 import { SanitizeHtmlPipe } from '../sanitize.component';
 import { LimitToPipe } from '../limit-to-pipe.component';
 import { OrderByPipe } from '../order-by.pipe';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Title } from '@angular/platform-browser';
+
+import { AngularFireDatabase } from 'angularfire2/database'
+import * as firebase from 'firebase';
 
 declare var window: any;
 
@@ -25,14 +27,14 @@ export class AboutComponent implements OnInit {
     window.location.hash = location;
   }
 
-  constructor(private af: AngularFire, private titleService: Title) {
+  constructor(private af: AngularFireDatabase, private titleService: Title) {
     this.title = "About the Game";
     this.subTitle = "Heroes of the Storm"
     this.titleService.setTitle('Heroes of the Storm ZA | About');
   }
 
   ngOnInit() {
-    this.aboutContent = this.af.database.list('/about');
+    this.aboutContent = this.af.list('/about').valueChanges();
     this.aboutContent.subscribe((data) => {
       this.content = data;
       this.loaded = true;

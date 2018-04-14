@@ -53,11 +53,11 @@
     ></lazy>
 
     <div class="content">
-      <div class="name">{{hero.value.name}}</div>
-      <div class="title">{{hero.value.title}}</div>
-      <div class="role" [title]="hero.value.role.description">
-        <div class="hero-role tiny {{hero.value.role.slug}}"></div>
-        <div class="role-title">{{hero.value.role.name}}</div>
+      <div class="name">{{hero.value.baseHeroInfo.name}}</div>
+      <div class="title">{{hero.value.baseHeroInfo.title}}</div>
+      <div class="role" [title]="hero.value.baseHeroInfo.role.description">
+        <div class="hero-role tiny {{hero.value.baseHeroInfo.role.slug}}"></div>
+        <div class="role-title">{{hero.value.baseHeroInfo.role.name}}</div>
       </div>
     </div>
   </div>
