@@ -20,7 +20,7 @@ export class AboutComponent implements OnInit {
   private subTitle = "";
   private content = {};
   private aboutContent: any;
-  private loaded: boolean = false;
+  public loaded: boolean = false;
 
   goTo(location): void {
     window.location.hash = "";
